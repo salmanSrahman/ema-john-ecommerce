@@ -16,14 +16,14 @@ const Shop = () => {
     <div>
       <Container>
         <Row>
-          <Col md={9}>
+          <Col md={10}>
             <div className="products-container">
               {products.map((product) => (
-                <Product product={product}></Product>
+                <Product key={product.key} product={product}></Product>
               ))}
             </div>
           </Col>
-          <Col md={3}>
+          <Col md={2}>
             <div className="cart-container"></div>
           </Col>
         </Row>

@@ -3,5 +3,16 @@
       grid-template-columns: 1fr 2fr;
       border-bottom: 2px solid gray;
       border-right: 2px solid gray;
-      padding: 7px;
+      padding: 20px 7px;
+}
+
+.btn-color {
+      background: goldenrod;
+      border: 0;
+}
+
+.rating-style {
+      color: goldenrod;
+      font-size: .6rem;
+
 }
