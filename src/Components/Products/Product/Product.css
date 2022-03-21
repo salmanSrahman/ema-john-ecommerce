@@ -1,0 +1,7 @@
+.product-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      border-bottom: 2px solid gray;
+      border-right: 2px solid gray;
+      padding: 7px;
+}
