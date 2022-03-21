@@ -4,10 +4,10 @@ import Rating from "react-rating";
 import Feature from "./Feature/Feature";
 import "./Product.css";
 
-const Product = ({ product }) => {
-  const { img, name, price, seller, star, starCount, features, stock } =
+const Product = ({ product, handleAddToCart }) => {
+  const { img, name, price, seller, star, starCount, features, stock, key } =
     product;
-  console.log(product);
+  
 
   return (
     <div className="product-container">
@@ -35,7 +35,11 @@ const Product = ({ product }) => {
                 />
                 <span className="text-secondary"> ({starCount} Review.)</span>
               </div>
-              <Button variant="warning" className="fw-bold my-2 btn-color">
+              <Button
+                variant="warning"
+                className="fw-bold my-2 btn-color"
+                onClick={() => handleAddToCart(product)}
+              >
                 Add To Cart
               </Button>
             </div>
