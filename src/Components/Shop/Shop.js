@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./Shop.css";
 import Product from "../Products/Product/Product";
 import Cart from "../Cart/Cart";
-import { addToDb } from "../../utilities/fakedb";
+import { addToDb, getStoredCart } from "../../utilities/fakedb";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -18,6 +18,22 @@ const Shop = () => {
         setDisplayProducts(data);
       });
   }, []);
+
+  useEffect(() => {
+    if (products.length) {
+      const savedCart = getStoredCart();
+      let getProduct = [];
+      for (const key in savedCart) {
+        const addedProduct = products.find((product) => product.key === key);
+        if (addedProduct) {
+          const quantity = savedCart[key];
+          addedProduct.quantity = quantity;
+        }
+        getProduct.push(addedProduct);
+      }
+      setCart(getProduct);
+    }
+  }, [products]);
 
   const handleAddToCart = (product) => {
     const newCart = [...cart, product];

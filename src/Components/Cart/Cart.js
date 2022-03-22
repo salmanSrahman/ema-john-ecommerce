@@ -2,11 +2,13 @@ import React from "react";
 import "./Cart.css";
 
 const Cart = ({ cart }) => {
+  console.log(cart);
   let subTotal = 0;
+  let productQuantity = 0;
   for (const product of cart) {
-    subTotal = subTotal + product.price;
+    productQuantity += product.quantity;
+    subTotal = subTotal + product.price * product.quantity;
   }
-
   const shippingTotal = subTotal > 100 ? 30 : 0;
   const totalBeforeTax = shippingTotal + subTotal;
   const tax = totalBeforeTax > 100 ? 10 : 0;
@@ -16,7 +18,7 @@ const Cart = ({ cart }) => {
     <div className="pt-5">
       <div className="text-center mb-3">
         <h3>Order Summary</h3>
-        <h5>Items Ordered: {cart.length}</h5>
+        <h5>Items Ordered: {productQuantity}</h5>
       </div>
       <div>
         <table style={{ width: "100%" }}>

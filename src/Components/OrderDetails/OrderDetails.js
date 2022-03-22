@@ -1,18 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import Rating from "react-rating";
-import Feature from "./Feature/Feature";
-import "./Product.css";
+import "./OrderDetails.css";
 
-const Product = ({ product, handleAddToCart }) => {
-  const { img, name, price, seller, star, starCount, features, stock } =
-    product;
-
+const OrderDetails = ({ product }) => {
+  const { name, price, seller, star, starCount, stock } = product;
   return (
     <div className="product-container">
-      <div className="product-img">
-        <img src={img} alt="" className="img-fluid" />
-      </div>
       <div className="product-details d-flex align-items-center">
         <div>
           <h5 className="text-primary fw-bold fs-5">{name}</h5>
@@ -34,24 +28,13 @@ const Product = ({ product, handleAddToCart }) => {
                 />
                 <span className="text-secondary"> ({starCount} Review.)</span>
               </div>
-              <Button
-                variant="warning"
-                className="fw-bold my-2 btn-color"
-                onClick={() => handleAddToCart(product)}
-              >
+              <Button variant="warning" className="fw-bold my-2 btn-color">
                 Add To Cart
               </Button>
             </div>
             <div>
               <h5>Features:</h5>
-              <ul>
-                {features.map((feature) => (
-                  <Feature
-                    key={feature.description}
-                    feature={feature}
-                  ></Feature>
-                ))}
-              </ul>
+              <ul></ul>
             </div>
           </div>
         </div>
@@ -60,4 +43,4 @@ const Product = ({ product, handleAddToCart }) => {
   );
 };
 
-export default Product;
+export default OrderDetails;
