@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { deleteFromDb } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import useCart from "../Hooks/useCart";
 import useProduct from "../Hooks/useProduct";
@@ -8,7 +9,13 @@ import "./Order.css";
 
 const Order = () => {
   const [products] = useProduct();
-  const [cart] = useCart(products);
+  const [cart, setCart] = useCart(products);
+
+  const handleRemove = (key) => {
+    const newCart = cart.filter((product) => product.key !== key);
+    setCart(newCart);
+    deleteFromDb(key);
+  };
   return (
     <div>
       <Container>
@@ -19,6 +26,7 @@ const Order = () => {
                 <OrderDetails
                   product={product}
                   key={product.key}
+                  handleRemove={handleRemove}
                 ></OrderDetails>
               ))}
             </div>

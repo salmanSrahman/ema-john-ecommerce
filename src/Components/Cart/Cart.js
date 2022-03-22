@@ -2,10 +2,12 @@ import React from "react";
 import "./Cart.css";
 
 const Cart = ({ cart }) => {
-  console.log(cart);
   let subTotal = 0;
   let productQuantity = 0;
   for (const product of cart) {
+    if (!product.quantity) {
+      product.quantity = 1;
+    }
     productQuantity += product.quantity;
     subTotal = subTotal + product.price * product.quantity;
   }
